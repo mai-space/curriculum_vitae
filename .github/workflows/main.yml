@@ -18,6 +18,6 @@ jobs:
         with:
           output_dir: download
           main_latex_file: mai-joel_maximilian-curriculum_vitae.tex
-          ctan_packages: inputenc xstring xifthen raleway fontenc moresize fontawesome paracol geometry fancyhdr array graphicx tikz transparent color hidelinks
+          ctan_packages: ifmtarg xstring xifthen raleway fontenc moresize fontawesome paracol geometry fancyhdr array graphicx tikz transparent color hidelinks
       - name: Push pdf to repository
         uses: actions-x/commit@v6
