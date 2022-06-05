@@ -161,6 +161,16 @@
 \usepackage{tikz}				
 \usetikzlibrary{shapes, backgrounds,mindmap, trees}
 
+\newsavebox{\picbox}
+\newcommand{\cutpic}[3]{
+  \savebox{\picbox}{\includegraphics[width=#2]{#3}}
+  \tikz\node [draw, rounded corners=#1, line width=4pt,
+    color=white, minimum width=\wd\picbox,
+    minimum height=\ht\picbox, path picture={
+      \node at (path picture bounding box.center) {
+        \usebox{\picbox}};
+    }] {};}
+
 %----------------------------------------------------------------------------------------
 %	Color DEFINITIONS
 %---------------------------------------------------------------------------------------- 
@@ -168,16 +178,16 @@
 \usepackage{color}
 
 % primary color
-\definecolor{maincol}{RGB}{ 45, 50, 90 }
+\definecolor{maincol}{RGB}{ 66, 59, 109 } 
 
 % accent color, secondary
 % \definecolor{accentcol}{RGB}{ 250, 150, 10 }
 
 % dark color
-\definecolor{darkcol}{RGB}{ 70, 70, 70 }
+\definecolor{darkcol}{RGB}{ 78, 77, 92 }
 
 % light color
-\definecolor{lightcol}{RGB}{245,245,245}
+\definecolor{lightcol}{RGB}{ 213, 212, 222 }
 
 
 % Package for links, must be the last package used
@@ -351,16 +361,19 @@
 %---------------------------------------------------------------------------------------
 %	META IMAGE
 %----------------------------------------------------------------------------------------
-%\includegraphics[width=\linewidth]{untitled.jpg}	%trimming relative to image size
 
-
+\cutpic{0cm}{\linewidth}{assets/images/profile_picture.jpeg}
 \vfill\null
+
 \cvsection{CONTACT}
-	
-\iconemail{EnvelopeSquare}{14}{yourmail@gmail.com}{yourmail@gmail.com}{black}\\[6pt]
-\icontext{Github}{14}{\href{https://github.com/yourid}{yourid}}{black}\\[6pt]
-\icontext{Linkedin}{14}{\href{https://www.linkedin.com/in/yourid/}{yourid}}{black}\\[6pt]
-\icontext{Phone}{14}{+91 XXXXX XXXXX}{black}\\[6pt]
+
+\icontext{Phone}{14}{+49 173 7 033 077}{black}\\[6pt]
+\iconemail{EnvelopeSquare}{14}{joel@maispace.de}{joel@maispace.de}{black}\\[6pt]
+\icontext{Github}{14}{\href{https://github.com/inf166}{inf166}}{black}\\[6pt]
+\icontext{Linkedin}{14}{\href{https://www.linkedin.com/in/joel-maximilian-mai/}{joel-maximilian-mai}}{black}\\[6pt]
+\icontext{Xing}{14}{\href{https://www.xing.com/profile/JoelMaximilian_Mai/portfolio}{JoelMaximilian$\_$Mai}}{black}\\[6pt]
+\icontext{MapMarker}{14}{{Graf-Berghe-v.-Trips-Rg, 112 \\ DE-50169 Kerpen}}{black}\\[6pt]
+\icontext{BirthdayCake}{14}{{19. July 1998, Cologne DE}}{black}\\[6pt]
 \vfill\null
 %\cvqrcode{0.7}
 
@@ -371,65 +384,43 @@
 
 %\cvskill{Skill_Name} {Years of experience} {percentage of bar fill} \\[-2pt]
 
-\cvskill{Internet of Things} {5+ yrs} {1} \\[-2pt]
+\cvskill{TYPO3 Developer} {1+ yrs} {0.7} \\[-2pt]
 
-\cvskill{Machine Learning} {1+ yrs} {0.2} \\[-2pt]
+\cvskill{SCSS} {3+ yrs} {0.8} \\[-2pt]
 
-\cvskill{Python} {3+ yrs} {0.6} \\[-2pt]
+\cvskill{JavaScript} {4+ yrs} {0.7} \\[-2pt]
 
-\cvskill{C++} {5+ yrs} {1} \\[-2pt]
+\cvskill{TypeScript} {1+ yrs} {0.4} \\[-2pt]
 
-\cvskill{Linux} {1+ yrs} {0.2} \\[-2pt]
+\cvskill{PHP} {1 yr} {0.3} \\[-2pt]
 
-\cvskill{Web Development} {5+ yrs} {1} \\[-2pt]
+\cvskill{Java} {4+ yrs} {0.8} \\[-2pt]
 
-\cvskill{Quantum Computing} {1+ yrs} {0.2} \\[-2pt]
-
-\cvskill{Teaching} {3+ yrs} {0.6} \\[-2pt]
-
+\cvskill{Web Development} {5+ yrs} {0.9} \\[-2pt]
 %\vfill\null
 %\cvqrcode{0.7}
 
 %---------------------------------------------------------------------------------------
 %	ACHIEVEMENTS
 %----------------------------------------------------------------------------------------
-\newpage
-\cvsection{ACHIEVEMENTS}
+%\cvsection{ACHIEVEMENTS}
 
-\cvmetaevent
-{GATE}
-{Computer Science and Information Technology (CS)}
-{}
-{Qualified in 2016 with 389 score in general category.}
-
-\cvmetaevent
-{IELTS}
-{7.0 out of 9 Band}
-{}
-{A certificate issued by International Development Program (IDP), Australia to prove English language proficiency for non-native English language speakers.}
-
-\cvmetaevent
-{Cloud Computing 101}
-{94.30\%}
-{}
-{A certificate issued by coursera to prove basic understanding of cloud computing.}
-
-\cvmetaevent
-{Achievement}
-{Certificate Detail}
-{}
-{Description will go here as a sentence.}
+%\cvmetaevent
+%{Certified SAFe® 5 DevOps Practitioner}
+%{Issued: Aug. 2021 - Valid until: Aug. 2022}
+%{Scaled Agile, Inc.}
+%{Certificate ID: 86567949-3909}
 
 \end{leftcolumn}
 \begin{rightcolumn}
 %---------------------------------------------------------------------------------------
 %	TITLE  HEADER
 %----------------------------------------------------------------------------------------
-\fcolorbox{white}{darkcol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
+\fcolorbox{white}{maincol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
 	\begin {center}
-		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ YOUR NAME } } } } \\[-24pt]
+		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ Joël Maximilian Mai } } } } \\[-24pt]
 		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} {Research Scholar - Computer Science \& Engineering } }
+		\large{ \textcolor{white} {TYPO3 Developer } }
 	\end {center}
 \end{minipage}} \\[14pt]
 \vspace{-12pt}
@@ -441,24 +432,17 @@
 \cvsection{EDUCATION}
 
 \cvevent
-	{\textbf{2019 - ongoing}}
-	{Ph. D. - Computer Science $\&$ Engineering}
-	{IIIT - Lucknow, UP (India)}
-	{Current Status: Coursework and On-campus duration completed.}
+	{\textbf{2016 - ongoing}}
+	{Bachelor - Media $\&$ Computer Sience}
+	{TH Köln - Cologne University of Applied Sciences}
+	{Current Status: Defining thesis}
 \vfill\null
 
 \cvevent
-	{\textbf{20XX - 20XX}}
-	{M. Tech. - Computer Science $\&$ Engineering}
-	{University Name - City, State (Country)}
-	{Passed with \textbf{X.XX CGPA}. Thesis work on Your thesis domain.}
-\vfill\null
-
-\cvevent
-    {\textbf{20XX - 20XX}}
-    {B. Tech. - Information Technology}
-    {University Name - City, State (Country)}
-    {Passed with \textbf{XX.XX$\%$}. Major project was Major project name.}
+	{\textbf{2008 - 2016}}
+	{Abitur - Mathematics $\&$ Computer Sience}
+	{Gymnasium Kerpen (Europaschule)}
+	{Passed with \textbf{2.3}.}
 \vfill\null
 
 %---------------------------------------------------------------------------------------
@@ -468,50 +452,13 @@
 \cvsection{WORK EXPERIENCE}
 
 \cvevent
-	{\textbf{Jan YY - Dec YY}}
-	{Position name}
-	{Institute/Organization, City (State)}
-	{Write about your roles and responsibilities. In case of teaching experience also write about the subjects you taught.}
+	{\textbf{Okt. 20 – ongoing}}
+	{Working student}
+	{Institut der deutschen Wirtschaft Köln Medien GmbH, Cologne}
+	{Web Development with focus on the TYPO3 Content Management System and Frontend Development}
 	{}
 \vfill\null
 
-\cvevent
-	{\textbf{Jan YY - Jul YY}}
-	{Position name}
-	{Institute/Organization, City (State)}
-	{Write about your roles and responsibilities. In case of teaching experience also write about the subjects you taught.}
-	{}
-\vfill\null
-%---------------------------------------------------------------------------------------
-%	PUBLICATION
-%----------------------------------------------------------------------------------------
-\vspace{-0.5cm}
-\vfill\null
-\cvsection{PUBLICATIONS}
-
-\cvevent
-	{\textbf{UGC Listed}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Accepted and Published}
-	{}
-\vfill\null
-
-\cvevent
-	{\textbf{SCI - IF X.XXX}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Under Review}
-	{}
-\vfill\null
-
-\cvevent
-	{\textbf{SCI - IF X.XXX}}
-	{Title of your research paper}
-	{Journal Name (ISSN: XXXX-XXXX) Vol XX, Issue XX, 20XX}
-	{Status: Under Review}
-	{}
-\vfill\null
 %---------------------------------------------------------------------------------------
 %	PROJECTS
 %----------------------------------------------------------------------------------------
@@ -519,58 +466,19 @@
 \cvsection{PROJECTS}
 
 \cvevent
-	{\textbf{20XX}}
-	{Project Name}
-	{Tool: Python, Raspberry Pi}
-	{A short description of your project.}
+	{\textbf{2022}}
+	{Maispace.de}
+	{Tool: GitHub Actions, TYPO3, PHP, SCSS}
+	{A portfolio project to show of my skills and best practices on TYPO3 Development.}
 \vfill\null
 
 
-\cvevent
-	{\textbf{20XX}}
-	{Project Name}
-	{Tool: Web Development}
-	{A short description of your project.}
-\vfill\null
-
-
-\cvevent
-	{\textbf{20XX}}
-	{Project Name}
-	{Tool: Android Studio}
-	{A short description of your project.}
-\vfill\null
-
-%---------------------------------------------------------------------------------------
-%	WORKSHOPS
-%----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{WORKSHOPS \& CONFERENCES}
-
-\cvevent
-	{\textbf{Mon 20XX}}
-	{Name of Conference}
-	{Conducted by}
-	{}
-\vfill\null
-
-\cvevent
-	{\textbf{May 2019}}
-	{IEEE Internation Conference on Future of Internet of Things}
-	{IEEE \& IIT Kanpur}
-	{}
-\vfill\null
-
-\cvevent
-	{\textbf{Jul 2020}}
-	{Online International Workshop on Machine Learning Applications to Images, IoT and Wireless Sensor Networks}
-	{University of Essex and IIIT, Lucknow}
-	{}
-\vfill\null
-%---------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
-
+%\cvevent
+%	{\textbf{20XX}}
+%	{Project Name}
+%	{Tool: Web Development}
+%	{A short description of your project.}
+%\vfill\null
 %---------------------------------------------------------------------------------------
 %	PERSONAL DETAILS
 %----------------------------------------------------------------------------------------
@@ -578,10 +486,9 @@
 \cvsection{EXTRACURRICULAR}
 \vspace{-0.3cm}
 \begin{itemize}
-  \item Put all the points that are not covered in \textbf{above sections}.
-  \item Put all the points that are \textbf{not covered} in above sections.
-  \item Put all the \textbf{points} that are not covered in above sections.
-  \item \textbf{Put all the points} that are not covered in above sections.
+  \item I really like making \textbf{music}. Checkt it out \textbf{\href{https://soundcloud.com/newmax_ofc/tracks}{here.}}
+  \item Another hobby of mine is \textbf{editing videos or photos}.
+  \item I am currently collecting a \textbf{list of best practices} for the development and deployment of TYPO3 projects.
 \end{itemize}
 \vfill\null
 
