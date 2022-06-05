@@ -17,6 +17,7 @@ jobs:
         uses: thomas-chauvet/latex2pdf-action@1.1.0
         with:
           output_dir: download
-          main_latex_file: main.tex
+          main_latex_file: mai-joel_maximilian-curriculum_vitae.tex
+          ctan_packages: xstring, xifthen, raleway, fontenc, moresize, fontawesome, paracol, fancyhdr
       - name: Push pdf to repository
         uses: actions-x/commit@v6
