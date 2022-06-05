@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.6.5)  5 JUN 2022 15:37
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.6.5)  5 JUN 2022 15:43
  restricted system commands enabled.
 **mai-joel_maximilian-curriculum_vitae.tex
 (./mai-joel_maximilian-curriculum_vitae.tex
@@ -58,9 +58,30 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 
 Package inputenc Warning: inputenc package ignored with utf8 based engines.
 
+) (/root/.TinyTeX/texmf-dist/tex/generic/xstring/xstring.sty (/root/.TinyTeX/texmf-dist/tex/generic/xstring/xstring.tex
+\integerpart=\count191
+\decimalpart=\count192
+)
+Package: xstring 2021/07/21 v1.84 String manipulations (CT)
+) (/root/.TinyTeX/texmf-dist/tex/latex/xifthen/xifthen.sty
+Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
+ (/root/.TinyTeX/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count193
+\calc@Bcount=\count194
+\calc@Adimen=\dimen138
+\calc@Bdimen=\dimen139
+\calc@Askip=\skip49
+\calc@Bskip=\skip50
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count195
+\calc@Cskip=\skip51
+) (/root/.TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
 )
 
-! LaTeX Error: File `xstring.sty' not found.
+! LaTeX Error: File `ifmtarg.sty' not found.
 
 Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: sty)
@@ -69,18 +90,18 @@ Enter file name:
 ! Emergency stop.
 <read *> 
    
-l.48 
+l.12 
     
 End of file on the terminal!
 
 
 
 Here is how much of LuaTeX's memory you used:
- 285 strings out of 477736
- 100000,383344 words of node,token memory allocated 375 words of node memory still in use:
-   2 hlist, 1 rule, 1 dir, 3 kern, 1 glyph, 3 attribute, 48 glue_spec, 3 attribute_list, 1 write nodes
-   avail lists: 2:9,3:2,4:1,5:1,7:2,9:3
- 21136 multiletter control sequences out of 65536+600000
+ 769 strings out of 477736
+ 100000,383344 words of node,token memory allocated 377 words of node memory still in use:
+   2 hlist, 1 rule, 1 dir, 3 kern, 1 glyph, 3 attribute, 48 glue_spec, 3 attribute_list, 1 if_stack, 1 write nodes
+   avail lists: 2:8,3:2,4:1,5:1,7:2,9:3
+ 21579 multiletter control sequences out of 65536+600000
  15 fonts using 723367 bytes
- 33i,0n,37p,187b,40s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 40i,0n,46p,257b,40s stack positions out of 10000i,1000n,20000p,200000b,200000s
 !  ==> Fatal error occurred, no output PDF file produced!
