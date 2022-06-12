@@ -9,3 +9,7 @@
         </p>
     </embed>
 </object>
+
+### Alternatively available translations
+![ENGLISH](https://img.shields.io/badge/English-%2307F.svg?style=for-the-badge&logo=GitHub&logoColor=white)
+![GERMAN](https://img.shields.io/badge/German-%23FF0.svg?style=for-the-badge&logo=GitHub&logoColor=black)
