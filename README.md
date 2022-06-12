@@ -11,5 +11,7 @@
 </object>
 
 ### Alternatively available translations
-![ENGLISH](https://img.shields.io/badge/English-%2307F.svg?style=for-the-badge&logo=GitHub&logoColor=white)
-![GERMAN](https://img.shields.io/badge/German-%23FF0.svg?style=for-the-badge&logo=GitHub&logoColor=black)
+
+[![ENGLISH](https://img.shields.io/badge/English-%2307F.svg?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Inf166/curriculum_vitae/raw/languages/english/download/mai-joel_maximilian-curriculum_vitae.pdf)
+
+[![GERMAN](https://img.shields.io/badge/German-%23FF0.svg?style=for-the-badge&logo=GitHub&logoColor=black)](https://github.com/Inf166/curriculum_vitae/raw/languages/german/download/mai-joel_maximilian-curriculum_vitae.pdf)
