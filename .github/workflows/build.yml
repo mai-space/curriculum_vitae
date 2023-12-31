@@ -37,15 +37,23 @@ jobs:
       
       - name: Test if pdf build was successful
         run: '(test -f downloads/mai-joel_maximilian-curriculum_vitae.pdf && echo PDF exists) || (echo PDF does not exist && exit 1)'
-      
+        
+      - name: Get current commit hash
+        id: commit_hash
+        run: echo "::set-output name=hash::$(git rev-parse HEAD)"
+
+      - name: Generate tag name
+        id: generate_tag
+        run: echo "::set-output name=tag::v$GITHUB_SHA"
+        
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.1.4
         with:
           files: |
             downloads/mai-joel_maximilian-curriculum_vitae.pdf
-          tag_name: ${{ github.sha }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ steps.generate_tag.outputs.tag }}
+          release_name: Release ${{ steps.generate_tag.outputs.tag }}
           draft: false
           prerelease: false
         env:
