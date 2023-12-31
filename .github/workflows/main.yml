@@ -21,5 +21,5 @@ jobs:
           file: mai-joel_maximilian-curriculum_vitae.tex
           output-directory: downloads/
           args: -pdf
-      - run: '(test -f mai-joel_maximilian-curriculum_vitae.pdf && echo PDF exists) || (echo PDF does not exist && exit 1)'
+      - run: '(test -f downloads/mai-joel_maximilian-curriculum_vitae.pdf && echo PDF exists) || (echo PDF does not exist && exit 1)'
           
