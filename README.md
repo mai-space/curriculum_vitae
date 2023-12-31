@@ -1,6 +1,6 @@
 # Curriculum Vitae
 
-![Made with LaTeX](https://img.shields.io/badge/Made%20with-LaTeX-1f425f.svg)
+![Made with LaTeX](https://img.shields.io/static/v1?style=for-the-badge&message=LaTeX&color=008080&logo=latex&logoColor=white&label=Made%20with)
 
 This repository contains my professional Curriculum Vitae in both English and German versions. Feel free to download or view them to learn more about my qualifications and experiences.
 
