@@ -1,0 +1,30 @@
+name: Build LaTeX Document and Move PDF
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive
+        shell: bash
+
+      - name: Build LaTeX Document
+        run: |
+          pdflatex -interaction=nonstopmode -output-directory=build mai-joel_maximilian-curriculum_vitae.tex
+        working-directory: path/to/your/latex/files
+
+      - name: Rename and Move PDF
+        run: |
+          mv mai-joel_maximilian-curriculum_vitae.pdf downloads/
+          
