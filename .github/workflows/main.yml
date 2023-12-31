@@ -19,10 +19,7 @@ jobs:
         uses: antaljanosbenjamin/compile-latex@v1.0.0
         with:
           file: mai-joel_maximilian-curriculum_vitae.tex
-          # The directory for output files, relative to the root of the repository.
           output-directory: downloads/
-
-      - name: Rename and Move PDF
-        run: |
-          mv mai-joel_maximilian-curriculum_vitae.pdf downloads/
+          args: -pdf
+      - run: '(test -f mai-joel_maximilian-curriculum_vitae.pdf && echo PDF exists) || (echo PDF does not exist && exit 1)'
           
