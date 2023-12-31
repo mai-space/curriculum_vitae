@@ -1,25 +1,3 @@
-%   
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2019 Jan Küster
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-
-
 %============================================================================%
 %
 %	DOCUMENT DEFINITION
@@ -29,25 +7,21 @@
 %we use article class because we want to fully customize the page and don't use a cv template
 \documentclass[10pt,A4]{article}	
 
-
 %----------------------------------------------------------------------------------------
 %	ENCODING
 %----------------------------------------------------------------------------------------
-
 % we use utf8 since we want to build from any machine
 \usepackage[utf8]{inputenc}		
 
 %----------------------------------------------------------------------------------------
 %	LOGIC
 %----------------------------------------------------------------------------------------
-
 % provides \isempty test
 \usepackage{xstring, xifthen}
 
 %----------------------------------------------------------------------------------------
 %	FONT BASICS
 %----------------------------------------------------------------------------------------
-
 % some tex-live fonts - choose your own
 
 %\usepackage[defaultsans]{droidsans}
@@ -75,7 +49,6 @@
 %----------------------------------------------------------------------------------------
 %	FONT AWESOME ICONS
 %---------------------------------------------------------------------------------------- 
-
 % include the fontawesome icon set
 \usepackage{fontawesome}
 
@@ -113,7 +86,6 @@
 %----------------------------------------------------------------------------------------
 %	PAGE LAYOUT  DEFINITIONS
 %----------------------------------------------------------------------------------------
-
 % page outer frames (debug-only)
 % \usepackage{showframe}		
 
@@ -138,7 +110,6 @@
 %----------------------------------------------------------------------------------------
 %	TABLE /ARRAY DEFINITIONS
 %---------------------------------------------------------------------------------------- 
-
 % extended aligning of tabular cells
 \usepackage{array}
 
@@ -151,7 +122,6 @@
 %----------------------------------------------------------------------------------------
 %	GRAPHICS DEFINITIONS
 %---------------------------------------------------------------------------------------- 
-
 %for header image
 \usepackage{graphicx}
 
@@ -208,7 +178,6 @@
 %----------------------------------------------------------------------------------------
 %	 CV LIST
 %----------------------------------------------------------------------------------------
-
 % renders a standard latex list but abstracts away the environment definition (begin/end)
 \newcommand{\cvlist}[1] {
 	\begin{itemize}{#1}\end{itemize}
@@ -217,7 +186,6 @@
 %----------------------------------------------------------------------------------------
 %	 CV TEXT
 %----------------------------------------------------------------------------------------
-
 % base class to wrap any text based stuff here. Renders like a paragraph.
 % Allows complex commands to be passed, too.
 % param 1: *any
@@ -230,7 +198,6 @@
 %----------------------------------------------------------------------------------------
 %	CV SECTION
 %----------------------------------------------------------------------------------------
-
 % Renders a a CV section headline with a nice underline in main color.
 % param 1: section title
 \newcommand{\cvsection}[1] {
@@ -251,7 +218,6 @@
 %----------------------------------------------------------------------------------------
 %	META SKILL
 %----------------------------------------------------------------------------------------
-
 % Renders a progress-bar to indicate a certain skill in percent.
 % param 1: name of the skill / tech / etc.
 % param 2: level (for example in years)
@@ -272,7 +238,6 @@
 %----------------------------------------------------------------------------------------
 %	 CV EVENT
 %----------------------------------------------------------------------------------------
-
 % Renders a table and a paragraph (cvtext) wrapped in a parbox (to ensure minimum content
 % is glued together when a pagebreak appears).
 % Additional Information can be passed in text or list form (or other environments).
@@ -330,7 +295,6 @@
 %----------------------------------------------------------------------------------------
 %	 CV META EVENT
 %----------------------------------------------------------------------------------------
-
 % Renders a CV event on the sidebar
 % param 1: title
 % param 2: subtitle (optional)
@@ -353,7 +317,6 @@
 %---------------------------------------------------------------------------------------
 %	QR CODE
 %----------------------------------------------------------------------------------------
-
 % Renders a qrcode image (centered, relative to the parentwidth)
 % param 1: percent width, from 0 to 1
 \newcommand{\cvqrcode}[1] {
@@ -362,20 +325,14 @@
 	\end{center}
 }
 
-%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
-%,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-                       % EDIT AFTER THIS POINT
-%''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
-
+%---------------------------------------------------------------------------------------
+%	Include customizable Labels as custom package
+%----------------------------------------------------------------------------------------
+\usepackage{variables/labels}
 
 %============================================================================%
 %
-%
-%
 %	DOCUMENT CONTENT
-%
-%
 %
 %============================================================================%
 \begin{document}
@@ -384,216 +341,17 @@
 \setlength{\columnseprule}{4pt}
 \colseprulecolor{white}
 
+\newpage
+\input{./pages/opener}
 
 \newpage
-\renewcommand{\arraystretch}{0.4}
-\begin{tabular*}{1\mpwidth}{p{0.68\mpwidth}  r}
-	\textcolor{white}{\textbf{Joël Maximilian Mai}}  & \icontext{Phone}{14}{+49 173 7 033 077}{black}\\[6pt] \\
-	\textcolor{gray-150}{\textbf{Joël Maximilian Mai}} & \icontext{EnvelopeSquare}{14}{joel@maispace.de}{black}\\[6pt] \\
-	\textcolor{primary}{\textbf{Joël Maximilian Mai}}  & \icontext{MapMarker}{14}{{Graf-Berghe-v.-Trips-Rg, 112 \\ 50169 Kerpen}}{black}\\[6pt] \\
-\end{tabular*}
-
-\begin{tikzpicture}[scale=1,very thin]
-	\fill [white] (0,0) rectangle (1\mpwidth, 0.15);
-\end{tikzpicture}
-
-\newcommand{\jobposition}{Position }
-\newcommand{\contactperson}{Herr Mustermann}
-\vspace{0.8cm}
-
-\begin{minipage}[t]{0.5\textwidth} % Adjust the width as needed
-    \textcolor{black}{\textbf{Unternehmen}}\\
-    \contactperson \\
-    Adresse \\
-    Adresszusatz \\
-\end{minipage}%
-\begin{minipage}[t]{0.5\textwidth} % Adjust the width as needed
-    \begin{flushright}
-        \today
-    \end{flushright}
-\end{minipage}%
-\vspace{2cm}
-
-\begin{LARGE}
-	\textcolor{accent}{\textbf{Bewerbung als \jobposition}}
-\end{LARGE}
-
-\vspace{1.8cm}
-
-Sehr geehrter \contactperson,
-\newline\newline
-die von Ihnen ausgeschriebene Stelle als \jobposition hat mich sofort angesprochen. Ich sehe darin die perfekte Chance, meine bisherige Erfahrung mit der Webentwicklung bei einem hervorragenden Arbeitgeber zu ergänzen. Aktuell arbeite ich an meiner Bachelorarbeit, die ich voraussichtlich am 23. Oktober 2022 einreichen werde. Während meines Studiums lag mein Schwerpunkt auf der Web-Entwicklung und der Mensch-Computer Interaktion. \\
-Das Interesse für diesen Bereich wurde bei mir bereits früh geweckt. Bei meinem bisherigen Arbeitgeber lernte ich den Aufbau von TYPO3 Projekten kennen, die Datenbankstruktur und das Arbeiten mit PHP. Mittlerweile behersche ich PHP ziemlich gut. In dem letzem wurden mir mehrere Projekte zugewiesen an denen ich der Lead Entwickler war, was meiner Weiterentwicklung in diesem Bereich sehr geholfen hat. \\
-Die Arbeit in ihrem Unternehmen als \jobposition bietet mir die Möglichkeit mein Wissen in PHP und TYPO3 noch weiter zu vertiefen.
-\newline\newline
-\textbf{Was ich Ihnen biete:}
-\newline\newline
-In meinem Studium konnte ich durch meine schnelle Auffassungsgabe mir schnell neue Workflows als auch Programmiersprachen aneignenen. So auch bei meinem jetzigen Arbeit geber. Neben dem Objektorientierten programmieren mit PHP liegen mir aber auch JavaScript/Typescript und das arbeiten mit Fluid und SCSS. Da mein Schwerpunkt bei der Mensch-Computer Interaktion liegt, bringe ich ein versiertes Verständnis von agilem Arbeiten und Human-Centered Design mit, von welchem Ihr Unternehmen sicher profitieren wird. Ich möchte Sie konstruktiv unterstützen und mich in Ihr Team einbringen.\\
-Überzeugen Sie sich von meinem Profil im Lebenslauf – und wenn das Ihren Vorstellungen von einem \jobposition entspricht, freue ich mich auf eine Einladung zum Vorstellungsgespräch.
-\newline\newline
-Mit besten Grüßen nach Köln
-\newline\newline
-\includegraphics[scale=0.3]{assets/images/signature.png}
+\input{./pages/cover-letter}
 
 \newpage
+\input{./pages/resume}
 
-\begin{paracol}{2}
-\begin{leftcolumn}
-%---------------------------------------------------------------------------------------
-%	META IMAGE
-%----------------------------------------------------------------------------------------
+\newpage
+\input{./pages/references}
 
-\cutpic{0cm}{\linewidth}{assets/images/profile_picture.jpeg}
-
-\cvsection{Kontakt}
-
-\icontext{Phone}{14}{\href{tel:+491737033077}{+49 173 7 033 077}}{black}\\[6pt]
-\iconemail{EnvelopeSquare}{14}{joel@maispace.de}{joel@maispace.de}{black}\\[6pt]
-\icontext{MapMarker}{14}{\href{https://maps.app.goo.gl/1FTs2EGCNSdXyY987}{Graf-Berghe-v.-Trips-Rg, 112 \\ 50169 Kerpen}}{black}\\[6pt]
-\icontext{BirthdayCake}{14}{\href{https://www.onthisday.com/date/1998/july/19}{19. July 1998, Köln}}{black}\\[6pt]
-\icontext{MousePointer}{14}{\href{https://www.maispace.de}{www.maispace.de}}{black}\\[6pt]
-\icontext{Github}{14}{\href{https://github.com/mai-space}{mai-space}}{black}\\[6pt]
-\icontext{Linkedin}{14}{\href{https://www.linkedin.com/in/joel-maximilian-mai/}{joel-maximilian-mai}}{black}\\[6pt]
-\icontext{Xing}{14}{\href{https://www.xing.com/profile/JoelMaximilian_Mai/portfolio}{JoelMaximilian$\_$Mai}}{black}\\[6pt]
-%\cvqrcode{0.7}
-
-%---------------------------------------------------------------------------------------
-%	META SKILLS
-%----------------------------------------------------------------------------------------
-\cvsection{Fähigkeiten}
-
-%\cvskill{Skill_Name} {Years of experience} {percentage of bar fill} \\[-2pt]
-
-\cvskill{PHP} {\number\numexpr\year-2020\relax+ Jahre} {0.75} \\[-2pt]
-
-\cvskill{MySQL} {\number\numexpr\year-2021\relax+ Jahre} {0.7} \\[-2pt]
-
-\cvskill{Typoscript} {\number\numexpr\year-2021\relax+ Jahre} {0.55} \\[-2pt]
-
-\cvskill{Fluid} {\number\numexpr\year-2019\relax+ Jahre} {0.9} \\[-2pt]
-
-\cvskill{SCSS} {\number\numexpr\year-2018\relax+ Jahre} {0.85} \\[-2pt]
-
-\cvskill{JavaScript} {\number\numexpr\year-2015\relax+ Jahre} {0.75} \\[-2pt]
-
-\cvskill{TypeScript} {\number\numexpr\year-2021\relax+ Jahre} {0.65} \\[-2pt]
-
-\cvskill{Java} {\number\numexpr\year-2014\relax+ Jahre} {0.65} \\[-2pt]
-%\vfill\null
-%\cvqrcode{0.7}
-
-%---------------------------------------------------------------------------------------
-%	ACHIEVEMENTS
-%----------------------------------------------------------------------------------------
-%\cvsection{ACHIEVEMENTS}
-
-%\cvmetaevent
-%{Certified SAFe® 5 DevOps Practitioner}
-%{Issued: Aug. 2021 - Valid until: Aug. 2022}
-%{Scaled Agile, Inc.}
-%{Certificate ID: 86567949-3909}
-
-\end{leftcolumn}
-\begin{rightcolumn}
-
-%---------------------------------------------------------------------------------------
-%	TITLE  HEADER
-%----------------------------------------------------------------------------------------
-\fcolorbox{white}{primary}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
-	\begin {center}
-		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ Joël Maximilian Mai } } } } \\[-24pt]
-		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} {Angestrebte Position: \jobposition} }
-	\end {center}
-\end{minipage}} \\[14pt]
-\vspace{-12pt}
-
-%---------------------------------------------------------------------------------------
-%	WORK EXPERIENCE
-%----------------------------------------------------------------------------------------
-\vfill\null
-\cvsectionAccent{Berufliche Erfahrung}
-
-\cveventAccent
-	{\textbf{seit April 23}}
-	{Junior Fullstack Entwickler}
-	{IW Medien GmbH}
-	{TYPO3 Entwickler, Frontend Entwickler, Newsletter und DevOps}
-\vfill\null
-
-\cvevent
-	{\textbf{10 2020 – 4 2023}}
-	{Werkstudent}
-	{IW Medien GmbH}
-	{Web Entwicklung mit Fokus auf das TYPO3 Content-Management-System und die Frontendentwicklung}
-	{}
-\vfill\null
-
-%---------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-%\vfill\null
-\cvsection{Ausbildung}
-
-\cvevent
-	{\textbf{2016 - 2023}}
-	{Bachelor - Medieninformatik}
-	{Technische Hochschule Köln}
-	{Abschlussnote: \textbf{2,3}. Bachelorarbeit: \textbf{1.0}}
-\vfill\null
-
-\cvevent
-	{\textbf{2008 - 2016}}
-	{Abitur - Mathematik und Informatik Leistungskurs}
-	{Gymnasium Kerpen (Europaschule)}
-	{Abschlussnote: \textbf{2,3}.}
-\vfill\null
-
-%---------------------------------------------------------------------------------------
-%	PROJECTS
-%----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{Projekte}
-
-\cvevent
-	{\textbf{2022}}
-	{Design Konzept nach DIN EN ISO 9241-220}
-	{Tools: Anforderungsermittlung, User Stories, Navigation Map, Wireframes, Mockups, High Fidelity Prototype}
-	{Eine Iteration der Web App mit einem verbesserten, nutzer-zentrierten Design Konzept}
-\vfill\null
-
-\cvevent
-	{\textbf{2022}}
-	{PWA mit Peer to Peer für die Kommunikation}
-	{Tools: VueJs, WebRTC, Google Firebase, Heroku, Github}
-	{Eine Web App mit der Nutzer Koch-Rezepte untereinander teilen können, auf Basis von Peer to Peer Kommunikation}
-\vfill\null
-
-
-%\cvevent
-%	{\textbf{20XX}}
-%	{Project Name}
-%	{Tool: Web Development}
-%	{A short description of your project.}
-%\vfill\null
-%---------------------------------------------------------------------------------------
-%	PERSONAL DETAILS
-%----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{EXTRACURRICULAR}
-\vspace{-0.3cm}
-\begin{itemize}
-  \item Als Ausgleich zu meiner logischen Arbeit mache ich \textbf{Musik}.
-  \item Ein weiteres Hobby von mir ist \textbf{Videos oder Fotos bearbeiten}.
-\end{itemize}
-\vfill\null
-
-
-% hotfixes to create fake-space to ensure the whole height is used
-\vfill
-\vfill
-\vfill
-\end{rightcolumn}
-\end{paracol}
 \end{document}
 
