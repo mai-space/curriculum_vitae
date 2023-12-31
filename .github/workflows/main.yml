@@ -20,7 +20,7 @@ jobs:
         with:
           file: mai-joel_maximilian-curriculum_vitae.tex
           # The directory for output files, relative to the root of the repository.
-          output-directory: ./downloads/
+          output-directory: downloads/
 
       - name: Rename and Move PDF
         run: |
