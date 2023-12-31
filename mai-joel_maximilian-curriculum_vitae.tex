@@ -1,4 +1,4 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%   
 %	The MIT License (MIT)
 %
 %	Copyright (c) 2019 Jan Küster
@@ -18,8 +18,6 @@
 %	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 %	THE SOFTWARE.
 %	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
 
 
 %============================================================================%
@@ -94,7 +92,7 @@
 
 % icon shortcut
 \newcommand{\icon}[3] { 							
-	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+	\makebox(#2, #2){\textcolor{black}{\csname fa#1\endcsname}}
 }	
 
 % icon with text shortcut
@@ -183,18 +181,15 @@
 \usepackage{transparent}
 \usepackage{color}
 
-% primary color 625dcc
-\definecolor{maincol}{RGB}{ 70, 64, 205 }
+\definecolor{white}{RGB}{ 244, 244, 246 }
+\definecolor{gray-150}{RGB}{ 216, 214, 225 }
+\definecolor{black}{RGB}{ 34, 29, 60 }
 
-% accent color, secondary
-% \definecolor{accentcol}{RGB}{ 250, 150, 10 }
+\definecolor{primary}{RGB}{ 81, 75, 190 }
+\definecolor{secondary}{RGB}{ 129, 125, 204 }
+\definecolor{tertiary}{RGB}{ 177, 175, 217 }
 
-% dark color
-\definecolor{darkcol}{RGB}{ 26, 24, 60 }
-
-% light color
-\definecolor{lightcol}{RGB}{ 168, 167, 183 }
-
+\definecolor{accent}{RGB}{ 223, 120, 73 }
 
 % Package for links, must be the last package used
 \usepackage[hidelinks]{hyperref}
@@ -204,8 +199,6 @@
 % can also be used for other boxes / environments
 \newcommand{\mpwidth}{\linewidth-\fboxsep-\fboxsep}
 	
-
-
 %============================================================================%
 %
 %	CV COMMANDS
@@ -243,8 +236,15 @@
 \newcommand{\cvsection}[1] {
 	\vspace{14pt}
 	\cvtext{
-		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
-		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\
+		\textbf{\LARGE{\textcolor{black}{\uppercase{#1}}}}\\[-4pt]
+		\textcolor{primary}{ \rule{0.1\textwidth}{2pt} } \\
+	}
+}
+\newcommand{\cvsectionAccent}[1] {
+	\vspace{14pt}
+	\cvtext{
+		\textbf{\LARGE{\textcolor{black}{\uppercase{#1}}}}\\[-4pt]
+		\textcolor{accent}{ \rule{0.1\textwidth}{2pt} } \\
 	}
 }
 
@@ -257,14 +257,14 @@
 % param 2: level (for example in years)
 % param 3: percent, values range from 0 to 1
 \newcommand{\cvskill}[3] {
-	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
- 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
+	\begin{tabular*}{1\mpwidth}{p{0.68\mpwidth}  r}
+ 		\textcolor{black}{\textbf{#1}} & \textcolor{primary}{#2}\\
 	\end{tabular*}%
 	
 	\hspace{4pt}
 	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
-		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
-		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.15);
+		\fill [white] (0,0) rectangle (1\mpwidth, 0.15);
+		\fill [secondary] (0,0) rectangle (#3\mpwidth, 0.15);
   	\end{tikzpicture}%
 }
 
@@ -290,8 +290,29 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\textbf{#3}} & \\
+	 		\textcolor{black}{\textbf{#2}} & \colorbox{primary}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
+			\textcolor{secondary}{\textbf{#3}} & \\
+		\end{tabular*}\\[4pt]
+	
+		\ifthenelse{\isempty{#4}}{}{
+			\cvtext{#4}\\
+		}
+	}
+
+	\ifthenelse{\isempty{#5}}{}{
+		\vspace{4pt}
+		{#5}
+	}
+	\vspace{4pt}
+}
+\newcommand{\cveventAccent}[7] {
+	
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+	 		\textcolor{black}{\textbf{#2}} & \colorbox{accent}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
+			\textcolor{accent}{\textbf{#3}} & \\
 		\end{tabular*}\\[4pt]
 	
 		\ifthenelse{\isempty{#4}}{}{
@@ -316,14 +337,14 @@
 % param 3: customer, employer, etc,. (optional)
 % param 4: info text (optional)
 \newcommand{\cvmetaevent}[4] {
-	\textcolor{maincol} {\cvtext{\textbf{\begin{flushleft}#1\end{flushleft}}}}
+	\textcolor{primary} {\cvtext{\textbf{\begin{flushleft}#1\end{flushleft}}}}
 
 	\ifthenelse{\isempty{#2}}{}{
-	\textcolor{darkcol} {\cvtext{\textbf{#2}} }
+	\textcolor{black} {\cvtext{\textbf{#2}} }
 	}
 
 	\ifthenelse{\isempty{#3}}{}{
-		\cvtext{{ \textcolor{darkcol} {#3} }}\\
+		\cvtext{{ \textcolor{black} {#3} }}\\
 	}
 
 	\cvtext{#4}\\[14pt]
@@ -361,35 +382,40 @@
 \columnratio{0.31}
 \setlength{\columnsep}{2.2em}
 \setlength{\columnseprule}{4pt}
-\colseprulecolor{lightcol}
+\colseprulecolor{white}
 
 
 \newpage
-
+\renewcommand{\arraystretch}{0.4}
 \begin{tabular*}{1\mpwidth}{p{0.68\mpwidth}  r}
 	\textcolor{white}{\textbf{Joël Maximilian Mai}}  & \icontext{Phone}{14}{+49 173 7 033 077}{black}\\[6pt] \\
-	\textcolor{white}{\textbf{Joël Maximilian Mai}} & \icontext{EnvelopeSquare}{14}{joel@maispace.de}{black}\\[6pt] \\
-	\textcolor{maincol}{\textbf{Joël Maximilian Mai}}  & \icontext{MapMarker}{14}{{Graf-Berghe-v.-Trips-Rg, 112 \\ 50169 Kerpen}}{black}\\[6pt] \\
+	\textcolor{gray-150}{\textbf{Joël Maximilian Mai}} & \icontext{EnvelopeSquare}{14}{joel@maispace.de}{black}\\[6pt] \\
+	\textcolor{primary}{\textbf{Joël Maximilian Mai}}  & \icontext{MapMarker}{14}{{Graf-Berghe-v.-Trips-Rg, 112 \\ 50169 Kerpen}}{black}\\[6pt] \\
 \end{tabular*}
 
 \begin{tikzpicture}[scale=1,very thin]
-	\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
+	\fill [white] (0,0) rectangle (1\mpwidth, 0.15);
 \end{tikzpicture}
-
-\begin{FlushRight}
-	\today
-\end{FlushRight}
 
 \newcommand{\jobposition}{Position }
 \newcommand{\contactperson}{Herr Mustermann}
-\textbf{Unternehmen}\\
-\contactperson \\
-Adresse \\
-Adresszusatz \\
+\vspace{0.8cm}
+
+\begin{minipage}[t]{0.5\textwidth} % Adjust the width as needed
+    \textcolor{black}{\textbf{Unternehmen}}\\
+    \contactperson \\
+    Adresse \\
+    Adresszusatz \\
+\end{minipage}%
+\begin{minipage}[t]{0.5\textwidth} % Adjust the width as needed
+    \begin{flushright}
+        \today
+    \end{flushright}
+\end{minipage}%
 \vspace{2cm}
 
 \begin{LARGE}
-	\textcolor{maincol}{\textbf{Bewerbung als \jobposition}}
+	\textcolor{accent}{\textbf{Bewerbung als \jobposition}}
 \end{LARGE}
 
 \vspace{1.8cm}
@@ -418,19 +444,17 @@ Mit besten Grüßen nach Köln
 %----------------------------------------------------------------------------------------
 
 \cutpic{0cm}{\linewidth}{assets/images/profile_picture.jpeg}
-\vfill\null
 
 \cvsection{Kontakt}
 
-\icontext{Phone}{14}{+49 173 7 033 077}{black}\\[6pt]
+\icontext{Phone}{14}{\href{tel:+491737033077}{+49 173 7 033 077}}{black}\\[6pt]
 \iconemail{EnvelopeSquare}{14}{joel@maispace.de}{joel@maispace.de}{black}\\[6pt]
+\icontext{MapMarker}{14}{\href{https://maps.app.goo.gl/1FTs2EGCNSdXyY987}{Graf-Berghe-v.-Trips-Rg, 112 \\ 50169 Kerpen}}{black}\\[6pt]
+\icontext{BirthdayCake}{14}{\href{https://www.onthisday.com/date/1998/july/19}{19. July 1998, Köln}}{black}\\[6pt]
+\icontext{MousePointer}{14}{\href{https://www.maispace.de}{www.maispace.de}}{black}\\[6pt]
 \icontext{Github}{14}{\href{https://github.com/mai-space}{mai-space}}{black}\\[6pt]
 \icontext{Linkedin}{14}{\href{https://www.linkedin.com/in/joel-maximilian-mai/}{joel-maximilian-mai}}{black}\\[6pt]
 \icontext{Xing}{14}{\href{https://www.xing.com/profile/JoelMaximilian_Mai/portfolio}{JoelMaximilian$\_$Mai}}{black}\\[6pt]
-\icontext{Website}{14}{\href{https://www.maispace.de}{www.maispace.de}}{black}\\[6pt]
-\icontext{MapMarker}{14}{{Graf-Berghe-v.-Trips-Rg, 112 \\ 50169 Kerpen}}{black}\\[6pt]
-\icontext{BirthdayCake}{14}{{19. July 1998, Köln}}{black}\\[6pt]
-\vfill\null
 %\cvqrcode{0.7}
 
 %---------------------------------------------------------------------------------------
@@ -440,21 +464,21 @@ Mit besten Grüßen nach Köln
 
 %\cvskill{Skill_Name} {Years of experience} {percentage of bar fill} \\[-2pt]
 
-\cvskill{PHP} {\number\numexpr\year-2020\relax+ Jahre} {0.7} \\[-2pt]
+\cvskill{PHP} {\number\numexpr\year-2020\relax+ Jahre} {0.75} \\[-2pt]
 
-\cvskill{MySQL} {\number\numexpr\year-2021\relax+ Jahre} {0.6} \\[-2pt]
+\cvskill{MySQL} {\number\numexpr\year-2021\relax+ Jahre} {0.7} \\[-2pt]
 
-\cvskill{Typoscript} {\number\numexpr\year-2021\relax+ Jahre} {0.5} \\[-2pt]
+\cvskill{Typoscript} {\number\numexpr\year-2021\relax+ Jahre} {0.55} \\[-2pt]
 
 \cvskill{Fluid} {\number\numexpr\year-2019\relax+ Jahre} {0.9} \\[-2pt]
 
-\cvskill{SCSS} {\number\numexpr\year-2018\relax+ Jahre} {0.9} \\[-2pt]
+\cvskill{SCSS} {\number\numexpr\year-2018\relax+ Jahre} {0.85} \\[-2pt]
 
-\cvskill{JavaScript} {\number\numexpr\year-2015\relax+ Jahre} {0.7} \\[-2pt]
+\cvskill{JavaScript} {\number\numexpr\year-2015\relax+ Jahre} {0.75} \\[-2pt]
 
-\cvskill{TypeScript} {\number\numexpr\year-2021\relax+ Jahre} {0.6} \\[-2pt]
+\cvskill{TypeScript} {\number\numexpr\year-2021\relax+ Jahre} {0.65} \\[-2pt]
 
-\cvskill{Java} {\number\numexpr\year-2014\relax+ Jahre} {0.6} \\[-2pt]
+\cvskill{Java} {\number\numexpr\year-2014\relax+ Jahre} {0.65} \\[-2pt]
 %\vfill\null
 %\cvqrcode{0.7}
 
@@ -475,7 +499,7 @@ Mit besten Grüßen nach Köln
 %---------------------------------------------------------------------------------------
 %	TITLE  HEADER
 %----------------------------------------------------------------------------------------
-\fcolorbox{white}{maincol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
+\fcolorbox{white}{primary}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
 	\begin {center}
 		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ Joël Maximilian Mai } } } } \\[-24pt]
 		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
@@ -488,19 +512,19 @@ Mit besten Grüßen nach Köln
 %	WORK EXPERIENCE
 %----------------------------------------------------------------------------------------
 \vfill\null
-\cvsection{Berufliche Erfahrung}
+\cvsectionAccent{Berufliche Erfahrung}
 
-\cvevent
-	{\textbf{April 23 - bis jetzt}}
+\cveventAccent
+	{\textbf{seit April 23}}
 	{Junior Fullstack Entwickler}
-	{Institut der deutschen Wirtschaft Köln Medien GmbH}
+	{IW Medien GmbH}
 	{TYPO3 Entwickler, Frontend Entwickler, Newsletter und DevOps}
 \vfill\null
 
 \cvevent
-	{\textbf{Okt. 20 – April 23}}
+	{\textbf{10 2020 – 4 2023}}
 	{Werkstudent}
-	{Institut der deutschen Wirtschaft Köln Medien GmbH}
+	{IW Medien GmbH}
 	{Web Entwicklung mit Fokus auf das TYPO3 Content-Management-System und die Frontendentwicklung}
 	{}
 \vfill\null
@@ -515,14 +539,14 @@ Mit besten Grüßen nach Köln
 	{\textbf{2016 - 2023}}
 	{Bachelor - Medieninformatik}
 	{Technische Hochschule Köln}
-	{Aktueller Notendurchschnitt: \textbf{2,4}. Aktueller Status: \textbf{Bachelorarbeit}}
+	{Abschlussnote: \textbf{2,3}. Bachelorarbeit: \textbf{1.0}}
 \vfill\null
 
 \cvevent
 	{\textbf{2008 - 2016}}
 	{Abitur - Mathematik und Informatik Leistungskurs}
 	{Gymnasium Kerpen (Europaschule)}
-	{Bestanden mit \textbf{2,3}.}
+	{Abschlussnote: \textbf{2,3}.}
 \vfill\null
 
 %---------------------------------------------------------------------------------------
