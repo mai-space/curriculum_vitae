@@ -40,7 +40,7 @@ jobs:
       
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v1.1.4
         with:
           files: |
             downloads/mai-joel_maximilian-curriculum_vitae.pdf
