@@ -44,7 +44,7 @@ jobs:
         with:
           files: |
             downloads/mai-joel_maximilian-curriculum_vitae.pdf
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ github.sha }}
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
