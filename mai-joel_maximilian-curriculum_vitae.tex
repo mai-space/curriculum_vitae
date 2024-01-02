@@ -1,27 +1,3 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2019 Jan Küster
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-
-
 %============================================================================%
 %
 %	DOCUMENT DEFINITION
@@ -31,25 +7,21 @@
 %we use article class because we want to fully customize the page and don't use a cv template
 \documentclass[10pt,A4]{article}	
 
-
 %----------------------------------------------------------------------------------------
 %	ENCODING
 %----------------------------------------------------------------------------------------
-
 % we use utf8 since we want to build from any machine
 \usepackage[utf8]{inputenc}		
 
 %----------------------------------------------------------------------------------------
 %	LOGIC
 %----------------------------------------------------------------------------------------
-
 % provides \isempty test
 \usepackage{xstring, xifthen}
 
 %----------------------------------------------------------------------------------------
 %	FONT BASICS
 %----------------------------------------------------------------------------------------
-
 % some tex-live fonts - choose your own
 
 %\usepackage[defaultsans]{droidsans}
@@ -68,10 +40,15 @@
 % more font size definitions
 \usepackage{moresize}
 
+% language
+\usepackage[german]{babel}
+
+% text alignment
+\usepackage{ragged2e}
+
 %----------------------------------------------------------------------------------------
 %	FONT AWESOME ICONS
 %---------------------------------------------------------------------------------------- 
-
 % include the fontawesome icon set
 \usepackage{fontawesome}
 
@@ -88,7 +65,7 @@
 
 % icon shortcut
 \newcommand{\icon}[3] { 							
-	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+	\makebox(#2, #2){\textcolor{black}{\csname fa#1\endcsname}}
 }	
 
 % icon with text shortcut
@@ -109,7 +86,6 @@
 %----------------------------------------------------------------------------------------
 %	PAGE LAYOUT  DEFINITIONS
 %----------------------------------------------------------------------------------------
-
 % page outer frames (debug-only)
 % \usepackage{showframe}		
 
@@ -134,7 +110,6 @@
 %----------------------------------------------------------------------------------------
 %	TABLE /ARRAY DEFINITIONS
 %---------------------------------------------------------------------------------------- 
-
 % extended aligning of tabular cells
 \usepackage{array}
 
@@ -147,7 +122,6 @@
 %----------------------------------------------------------------------------------------
 %	GRAPHICS DEFINITIONS
 %---------------------------------------------------------------------------------------- 
-
 %for header image
 \usepackage{graphicx}
 
@@ -177,18 +151,15 @@
 \usepackage{transparent}
 \usepackage{color}
 
-% primary color
-\definecolor{maincol}{RGB}{ 66, 59, 109 } 
+\definecolor{white}{RGB}{ 244, 244, 246 }
+\definecolor{gray-150}{RGB}{ 216, 214, 225 }
+\definecolor{black}{RGB}{ 34, 29, 60 }
 
-% accent color, secondary
-% \definecolor{accentcol}{RGB}{ 250, 150, 10 }
+\definecolor{primary}{RGB}{ 81, 75, 190 }
+\definecolor{secondary}{RGB}{ 129, 125, 204 }
+\definecolor{tertiary}{RGB}{ 177, 175, 217 }
 
-% dark color
-\definecolor{darkcol}{RGB}{ 78, 77, 92 }
-
-% light color
-\definecolor{lightcol}{RGB}{ 213, 212, 222 }
-
+\definecolor{accent}{RGB}{ 223, 120, 73 }
 
 % Package for links, must be the last package used
 \usepackage[hidelinks]{hyperref}
@@ -198,8 +169,6 @@
 % can also be used for other boxes / environments
 \newcommand{\mpwidth}{\linewidth-\fboxsep-\fboxsep}
 	
-
-
 %============================================================================%
 %
 %	CV COMMANDS
@@ -209,7 +178,6 @@
 %----------------------------------------------------------------------------------------
 %	 CV LIST
 %----------------------------------------------------------------------------------------
-
 % renders a standard latex list but abstracts away the environment definition (begin/end)
 \newcommand{\cvlist}[1] {
 	\begin{itemize}{#1}\end{itemize}
@@ -218,7 +186,6 @@
 %----------------------------------------------------------------------------------------
 %	 CV TEXT
 %----------------------------------------------------------------------------------------
-
 % base class to wrap any text based stuff here. Renders like a paragraph.
 % Allows complex commands to be passed, too.
 % param 1: *any
@@ -231,34 +198,39 @@
 %----------------------------------------------------------------------------------------
 %	CV SECTION
 %----------------------------------------------------------------------------------------
-
 % Renders a a CV section headline with a nice underline in main color.
 % param 1: section title
 \newcommand{\cvsection}[1] {
 	\vspace{14pt}
 	\cvtext{
-		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
-		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\
+		\textbf{\LARGE{\textcolor{black}{\uppercase{#1}}}}\\[-4pt]
+		\textcolor{primary}{ \rule{0.1\textwidth}{2pt} } \\
+	}
+}
+\newcommand{\cvsectionAccent}[1] {
+	\vspace{14pt}
+	\cvtext{
+		\textbf{\LARGE{\textcolor{black}{\uppercase{#1}}}}\\[-4pt]
+		\textcolor{accent}{ \rule{0.1\textwidth}{2pt} } \\
 	}
 }
 
 %----------------------------------------------------------------------------------------
 %	META SKILL
 %----------------------------------------------------------------------------------------
-
 % Renders a progress-bar to indicate a certain skill in percent.
 % param 1: name of the skill / tech / etc.
 % param 2: level (for example in years)
 % param 3: percent, values range from 0 to 1
 \newcommand{\cvskill}[3] {
-	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
- 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
+	\begin{tabular*}{1\mpwidth}{p{0.68\mpwidth}  r}
+ 		\textcolor{black}{\textbf{#1}} & \textcolor{primary}{#2}\\
 	\end{tabular*}%
 	
 	\hspace{4pt}
 	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
-		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
-		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.15);
+		\fill [white] (0,0) rectangle (1\mpwidth, 0.15);
+		\fill [secondary] (0,0) rectangle (#3\mpwidth, 0.15);
   	\end{tikzpicture}%
 }
 
@@ -266,7 +238,6 @@
 %----------------------------------------------------------------------------------------
 %	 CV EVENT
 %----------------------------------------------------------------------------------------
-
 % Renders a table and a paragraph (cvtext) wrapped in a parbox (to ensure minimum content
 % is glued together when a pagebreak appears).
 % Additional Information can be passed in text or list form (or other environments).
@@ -284,8 +255,29 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\textbf{#3}} & \\
+	 		\textcolor{black}{\textbf{#2}} & \colorbox{primary}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
+			\textcolor{secondary}{\textbf{#3}} & \\
+		\end{tabular*}\\[4pt]
+	
+		\ifthenelse{\isempty{#4}}{}{
+			\cvtext{#4}\\
+		}
+	}
+
+	\ifthenelse{\isempty{#5}}{}{
+		\vspace{4pt}
+		{#5}
+	}
+	\vspace{4pt}
+}
+\newcommand{\cveventAccent}[7] {
+	
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+	 		\textcolor{black}{\textbf{#2}} & \colorbox{accent}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
+			\textcolor{accent}{\textbf{#3}} & \\
 		\end{tabular*}\\[4pt]
 	
 		\ifthenelse{\isempty{#4}}{}{
@@ -303,21 +295,20 @@
 %----------------------------------------------------------------------------------------
 %	 CV META EVENT
 %----------------------------------------------------------------------------------------
-
 % Renders a CV event on the sidebar
 % param 1: title
 % param 2: subtitle (optional)
 % param 3: customer, employer, etc,. (optional)
 % param 4: info text (optional)
 \newcommand{\cvmetaevent}[4] {
-	\textcolor{maincol} {\cvtext{\textbf{\begin{flushleft}#1\end{flushleft}}}}
+	\textcolor{primary} {\cvtext{\textbf{\begin{flushleft}#1\end{flushleft}}}}
 
 	\ifthenelse{\isempty{#2}}{}{
-	\textcolor{darkcol} {\cvtext{\textbf{#2}} }
+	\textcolor{black} {\cvtext{\textbf{#2}} }
 	}
 
 	\ifthenelse{\isempty{#3}}{}{
-		\cvtext{{ \textcolor{darkcol} {#3} }}\\
+		\cvtext{{ \textcolor{black} {#3} }}\\
 	}
 
 	\cvtext{#4}\\[14pt]
@@ -326,7 +317,6 @@
 %---------------------------------------------------------------------------------------
 %	QR CODE
 %----------------------------------------------------------------------------------------
-
 % Renders a qrcode image (centered, relative to the parentwidth)
 % param 1: percent width, from 0 to 1
 \newcommand{\cvqrcode}[1] {
@@ -335,169 +325,33 @@
 	\end{center}
 }
 
-%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
-%,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-                       % EDIT AFTER THIS POINT
-%''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-%=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
-
+%---------------------------------------------------------------------------------------
+%	Include customizable Labels as custom package
+%----------------------------------------------------------------------------------------
+\usepackage{variables/labels}
 
 %============================================================================%
 %
-%
-%
 %	DOCUMENT CONTENT
-%
-%
 %
 %============================================================================%
 \begin{document}
 \columnratio{0.31}
 \setlength{\columnsep}{2.2em}
 \setlength{\columnseprule}{4pt}
-\colseprulecolor{lightcol}
-\begin{paracol}{2}
-\begin{leftcolumn}
-%---------------------------------------------------------------------------------------
-%	META IMAGE
-%----------------------------------------------------------------------------------------
+\colseprulecolor{white}
 
-\cutpic{0cm}{\linewidth}{assets/images/profile_picture.jpeg}
-\vfill\null
+\newpage
+\input{./pages/opener}
 
-\cvsection{CONTACT}
+\newpage
+\input{./pages/cover-letter}
 
-\icontext{Phone}{14}{+49 173 7 033 077}{black}\\[6pt]
-\iconemail{EnvelopeSquare}{14}{joel@maispace.de}{joel@maispace.de}{black}\\[6pt]
-\icontext{Github}{14}{\href{https://github.com/mai-space}{mai-space}}{black}\\[6pt]
-\icontext{Linkedin}{14}{\href{https://www.linkedin.com/in/joel-maximilian-mai/}{joel-maximilian-mai}}{black}\\[6pt]
-\icontext{Xing}{14}{\href{https://www.xing.com/profile/JoelMaximilian_Mai/portfolio}{JoelMaximilian$\_$Mai}}{black}\\[6pt]
-\icontext{MapMarker}{14}{{Graf-Berghe-v.-Trips-Rg, 112 \\ DE-50169 Kerpen}}{black}\\[6pt]
-\icontext{BirthdayCake}{14}{{19. July 1998, Cologne DE}}{black}\\[6pt]
-\vfill\null
-%\cvqrcode{0.7}
+\newpage
+\input{./pages/resume}
 
-%---------------------------------------------------------------------------------------
-%	META SKILLS
-%----------------------------------------------------------------------------------------
-\cvsection{SKILLS}
+\newpage
+\input{./pages/references}
 
-%\cvskill{Skill_Name} {Years of experience} {percentage of bar fill} \\[-2pt]
-
-\cvskill{TYPO3 Developer} {1+ yrs} {0.7} \\[-2pt]
-
-\cvskill{SCSS} {3+ yrs} {0.8} \\[-2pt]
-
-\cvskill{JavaScript} {4+ yrs} {0.7} \\[-2pt]
-
-\cvskill{TypeScript} {1+ yrs} {0.4} \\[-2pt]
-
-\cvskill{PHP} {1 yr} {0.3} \\[-2pt]
-
-\cvskill{Java} {4+ yrs} {0.8} \\[-2pt]
-
-\cvskill{Web Development} {5+ yrs} {0.9} \\[-2pt]
-%\vfill\null
-%\cvqrcode{0.7}
-
-%---------------------------------------------------------------------------------------
-%	ACHIEVEMENTS
-%----------------------------------------------------------------------------------------
-%\cvsection{ACHIEVEMENTS}
-
-%\cvmetaevent
-%{Certified SAFe® 5 DevOps Practitioner}
-%{Issued: Aug. 2021 - Valid until: Aug. 2022}
-%{Scaled Agile, Inc.}
-%{Certificate ID: 86567949-3909}
-
-\end{leftcolumn}
-\begin{rightcolumn}
-%---------------------------------------------------------------------------------------
-%	TITLE  HEADER
-%----------------------------------------------------------------------------------------
-\fcolorbox{white}{maincol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
-	\begin {center}
-		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ Joël Maximilian Mai } } } } \\[-24pt]
-		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} {TYPO3 Developer } }
-	\end {center}
-\end{minipage}} \\[14pt]
-\vspace{-12pt}
-
-%---------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-%\vfill\null
-\cvsection{EDUCATION}
-
-\cvevent
-	{\textbf{2016 - ongoing}}
-	{Bachelor - Media $\&$ Computer Sience}
-	{TH Köln - Cologne University of Applied Sciences}
-	{Current Status: Defining thesis}
-\vfill\null
-
-\cvevent
-	{\textbf{2008 - 2016}}
-	{Abitur - Mathematics $\&$ Computer Sience}
-	{Gymnasium Kerpen (Europaschule)}
-	{Passed with \textbf{2.3}.}
-\vfill\null
-
-%---------------------------------------------------------------------------------------
-%	WORK EXPERIENCE
-%----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{WORK EXPERIENCE}
-
-\cvevent
-	{\textbf{Okt. 20 – ongoing}}
-	{Working student}
-	{Institut der deutschen Wirtschaft Köln Medien GmbH, Cologne}
-	{Web Development with focus on the TYPO3 Content Management System and Frontend Development}
-	{}
-\vfill\null
-
-%---------------------------------------------------------------------------------------
-%	PROJECTS
-%----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{PROJECTS}
-
-\cvevent
-	{\textbf{2022}}
-	{Maispace.de}
-	{Tool: GitHub Actions, TYPO3, PHP, SCSS}
-	{A portfolio project to show of my skills and best practices on TYPO3 Development.}
-\vfill\null
-
-
-%\cvevent
-%	{\textbf{20XX}}
-%	{Project Name}
-%	{Tool: Web Development}
-%	{A short description of your project.}
-%\vfill\null
-%---------------------------------------------------------------------------------------
-%	PERSONAL DETAILS
-%----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{EXTRACURRICULAR}
-\vspace{-0.3cm}
-\begin{itemize}
-  \item I really like making \textbf{music}. Checkt it out \textbf{\href{https://soundcloud.com/newmax_ofc/tracks}{here.}}
-  \item Another hobby of mine is \textbf{editing videos or photos}.
-  \item I am currently collecting a \textbf{list of best practices} for the development and deployment of TYPO3 projects.
-\end{itemize}
-\vfill\null
-
-
-% hotfixes to create fake-space to ensure the whole height is used
-\vfill
-\vfill
-\vfill
-\end{rightcolumn}
-\end{paracol}
 \end{document}
 

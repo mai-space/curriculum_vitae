@@ -1,0 +1,56 @@
+name: Build and Publish current Resume
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout current Resume
+        uses: actions/checkout@v4
+          
+      - name: Compile Resume
+        uses: antaljanosbenjamin/compile-latex@v1.0.0
+        with:
+          file: mai-joel_maximilian-curriculum_vitae.tex
+          output-directory: downloads/
+          args: -pdf
+      
+      - name: Test if Resume build was successful
+        run: '(test -f downloads/mai-joel_maximilian-curriculum_vitae.pdf && echo PDF exists) || (echo PDF does not exist && exit 1)'
+        
+      - name: Get current commit hash
+        id: commit_hash
+        run: echo "::set-output name=hash::$(git rev-parse HEAD)"
+
+      - name: Generate new tag name
+        id: generate_tag
+        run: echo "::set-output name=tag::v$GITHUB_SHA"
+        
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.1.4
+        with:
+          files: |
+            downloads/mai-joel_maximilian-curriculum_vitae.pdf
+          tag_name: ${{ steps.generate_tag.outputs.tag }}
+          release_name: Release ${{ steps.generate_tag.outputs.tag }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Resume Asset to Release
+        id: upload_release_asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: downloads/mai-joel_maximilian-curriculum_vitae.pdf
+          asset_name: mai-joel_maximilian-curriculum_vitae.pdf
+          asset_content_type: application/pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
