@@ -1,29 +1,26 @@
 \begin{paracol}{2}
-\begin{leftcolumn}
 %---------------------------------------------------------------------------------------
-%	META IMAGE
+%	LEFT COLUMN
 %----------------------------------------------------------------------------------------
+\begin{leftcolumn}
 
+% Profileimage
 \cutpic{0cm}{\linewidth}{assets/images/profile_picture.jpeg}
 
+% Contact Section
 \cvsection{Kontakt}
 
-\icontext{Phone}{14}{\href{tel:+491737033077}{+49 173 7 033 077}}{black}\\[6pt]
-\iconemail{EnvelopeSquare}{14}{joel@maispace.de}{joel@maispace.de}{black}\\[6pt]
-\icontext{MapMarker}{14}{\href{https://maps.app.goo.gl/1FTs2EGCNSdXyY987}{Graf-Berghe-v.-Trips-Rg, 112 \\ 50169 Kerpen}}{black}\\[6pt]
+\icontext{Phone}{14}{\href{tel:+491737033077}{\telephone}}{black}\\[6pt]
+\iconemail{EnvelopeSquare}{14}{\mail}{\mail}{black}\\[6pt]
+\icontext{MapMarker}{14}{\href{https://maps.app.goo.gl/1FTs2EGCNSdXyY987}{\address}}{black}\\[6pt]
 \icontext{BirthdayCake}{14}{\href{https://www.onthisday.com/date/1998/july/19}{19. July 1998, Köln}}{black}\\[6pt]
-\icontext{MousePointer}{14}{\href{https://www.maispace.de}{www.maispace.de}}{black}\\[6pt]
-\icontext{Github}{14}{\href{https://github.com/mai-space}{mai-space}}{black}\\[6pt]
 \icontext{Linkedin}{14}{\href{https://www.linkedin.com/in/joel-maximilian-mai/}{joel-maximilian-mai}}{black}\\[6pt]
 \icontext{Xing}{14}{\href{https://www.xing.com/profile/JoelMaximilian_Mai/portfolio}{JoelMaximilian$\_$Mai}}{black}\\[6pt]
-%\cvqrcode{0.7}
+\icontext{MousePointer}{14}{\href{https://www.maispace.de}{www.maispace.de}}{black}\\[6pt]
+\icontext{Github}{14}{\href{https://github.com/mai-space}{mai-space}}{black}\\[6pt]
 
-%---------------------------------------------------------------------------------------
-%	META SKILLS
-%----------------------------------------------------------------------------------------
+% Skill Section
 \cvsection{Fähigkeiten}
-
-%\cvskill{Skill_Name} {Years of experience} {percentage of bar fill} \\[-2pt]
 
 \cvskill{PHP} {\number\numexpr\year-2020\relax+ Jahre} {0.75} \\[-2pt]
 
@@ -40,117 +37,63 @@
 \cvskill{TypeScript} {\number\numexpr\year-2021\relax+ Jahre} {0.65} \\[-2pt]
 
 \cvskill{Java} {\number\numexpr\year-2014\relax+ Jahre} {0.65} \\[-2pt]
-%\vfill\null
-%\cvqrcode{0.7}
-
-%---------------------------------------------------------------------------------------
-%	ACHIEVEMENTS
-%----------------------------------------------------------------------------------------
-%\cvsection{ACHIEVEMENTS}
-
-%\cvmetaevent
-%{Certified SAFe® 5 DevOps Practitioner}
-%{Issued: Aug. 2021 - Valid until: Aug. 2022}
-%{Scaled Agile, Inc.}
-%{Certificate ID: 86567949-3909}
 
 \end{leftcolumn}
-\begin{rightcolumn}
 
 %---------------------------------------------------------------------------------------
-%	TITLE  HEADER
+%	RIGHT COLUMN
 %----------------------------------------------------------------------------------------
+\begin{rightcolumn}
+
+% Header
 \fcolorbox{white}{primary}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
 	\begin {center}
-		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ Joël Maximilian Mai } } } } \\[-24pt]
+		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ \myname } } } } \\[-24pt]
 		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
 		\large{ \textcolor{white} {Angestrebte Position: \jobposition} }
 	\end {center}
 \end{minipage}} \\[14pt]
 \vspace{-12pt}
 
-%---------------------------------------------------------------------------------------
-%	WORK EXPERIENCE
-%----------------------------------------------------------------------------------------
-\vfill\null
+% Work Experience
 \cvsectionAccent{Berufliche Erfahrung}
 
 \cveventAccent
-	{\textbf{seit April 23}}
+	{seit April 23}
 	{Junior Fullstack Entwickler}
 	{IW Medien GmbH}
 	{TYPO3 Entwickler, Frontend Entwickler, Newsletter und DevOps}
-\vfill\null
-
-\cvevent
-	{\textbf{10 2020 – 4 2023}}
-	{Werkstudent}
-	{IW Medien GmbH}
-	{Web Entwicklung mit Fokus auf das TYPO3 Content-Management-System und die Frontendentwicklung}
 	{}
 \vfill\null
 
-%---------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-%\vfill\null
+\cvevent
+	{2020 – 2023}
+	{Werkstudent}
+	{IW Medien GmbH}
+	{TYPO3 Entwickler, Frontend Entwickler, Newsletter und DevOps}
+	{}
+\vfill\null
+
+% Education Section
 \cvsection{Ausbildung}
 
 \cvevent
-	{\textbf{2016 - 2023}}
+	{2016 - 2023}
 	{Bachelor - Medieninformatik}
 	{Technische Hochschule Köln}
-	{Abschlussnote: \textbf{2,3}. Bachelorarbeit: \textbf{1.0}}
+	{Abschlussnote: \textbf{2,3}. Bachelorarbeit: \textbf{1.0}.}
+	{}
 \vfill\null
 
 \cvevent
-	{\textbf{2008 - 2016}}
+	{2008 - 2016}
 	{Abitur - Mathematik und Informatik Leistungskurs}
 	{Gymnasium Kerpen (Europaschule)}
 	{Abschlussnote: \textbf{2,3}.}
+	{}
 \vfill\null
 
-%---------------------------------------------------------------------------------------
-%	PROJECTS
-%----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{Projekte}
-
-\cvevent
-	{\textbf{2022}}
-	{Design Konzept nach DIN EN ISO 9241-220}
-	{Tools: Anforderungsermittlung, User Stories, Navigation Map, Wireframes, Mockups, High Fidelity Prototype}
-	{Eine Iteration der Web App mit einem verbesserten, nutzer-zentrierten Design Konzept}
-\vfill\null
-
-\cvevent
-	{\textbf{2022}}
-	{PWA mit Peer to Peer für die Kommunikation}
-	{Tools: VueJs, WebRTC, Google Firebase, Heroku, Github}
-	{Eine Web App mit der Nutzer Koch-Rezepte untereinander teilen können, auf Basis von Peer to Peer Kommunikation}
-\vfill\null
-
-
-%\cvevent
-%	{\textbf{20XX}}
-%	{Project Name}
-%	{Tool: Web Development}
-%	{A short description of your project.}
-%\vfill\null
-%---------------------------------------------------------------------------------------
-%	PERSONAL DETAILS
-%----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{EXTRACURRICULAR}
-\vspace{-0.3cm}
-\begin{itemize}
-  \item Als Ausgleich zu meiner logischen Arbeit mache ich \textbf{Musik}.
-  \item Ein weiteres Hobby von mir ist \textbf{Videos oder Fotos bearbeiten}.
-\end{itemize}
-\vfill\null
-
-
-% hotfixes to create fake-space to ensure the whole height is used
+% Make Column Border full length 
 \vfill
 \vfill
 \vfill

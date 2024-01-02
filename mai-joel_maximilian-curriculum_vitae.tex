@@ -1,33 +1,23 @@
 %============================================================================%
-%
 %	DOCUMENT DEFINITION
-%
 %============================================================================%
-
-%we use article class because we want to fully customize the page and don't use a cv template
+% we use article class because we want to fully customize the page and don't use a cv template
 \documentclass[10pt,A4]{article}	
-
-%----------------------------------------------------------------------------------------
-%	ENCODING
-%----------------------------------------------------------------------------------------
 % we use utf8 since we want to build from any machine
 \usepackage[utf8]{inputenc}		
-
-%----------------------------------------------------------------------------------------
-%	LOGIC
-%----------------------------------------------------------------------------------------
 % provides \isempty test
 \usepackage{xstring, xifthen}
 
 %----------------------------------------------------------------------------------------
-%	FONT BASICS
+%	FONTS
 %----------------------------------------------------------------------------------------
 % some tex-live fonts - choose your own
 
 %\usepackage[defaultsans]{droidsans}
 %\usepackage[default]{comfortaa}
 %\usepackage{cmbright}
-\usepackage[default]{raleway}
+%\usepackage[default]{raleway}
+\usepackage{helvet}
 %\usepackage{fetamont}
 %\usepackage[default]{gillius}
 %\usepackage[light,math]{iwona}
@@ -169,165 +159,13 @@
 % can also be used for other boxes / environments
 \newcommand{\mpwidth}{\linewidth-\fboxsep-\fboxsep}
 	
-%============================================================================%
-%
-%	CV COMMANDS
-%
-%============================================================================%
-
-%----------------------------------------------------------------------------------------
-%	 CV LIST
-%----------------------------------------------------------------------------------------
-% renders a standard latex list but abstracts away the environment definition (begin/end)
-\newcommand{\cvlist}[1] {
-	\begin{itemize}{#1}\end{itemize}
-}
-
-%----------------------------------------------------------------------------------------
-%	 CV TEXT
-%----------------------------------------------------------------------------------------
-% base class to wrap any text based stuff here. Renders like a paragraph.
-% Allows complex commands to be passed, too.
-% param 1: *any
-\newcommand{\cvtext}[1] {
-	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
-		\parbox{1\mpwidth}{#1}
-	\end{tabular*}
-}
-
-%----------------------------------------------------------------------------------------
-%	CV SECTION
-%----------------------------------------------------------------------------------------
-% Renders a a CV section headline with a nice underline in main color.
-% param 1: section title
-\newcommand{\cvsection}[1] {
-	\vspace{14pt}
-	\cvtext{
-		\textbf{\LARGE{\textcolor{black}{\uppercase{#1}}}}\\[-4pt]
-		\textcolor{primary}{ \rule{0.1\textwidth}{2pt} } \\
-	}
-}
-\newcommand{\cvsectionAccent}[1] {
-	\vspace{14pt}
-	\cvtext{
-		\textbf{\LARGE{\textcolor{black}{\uppercase{#1}}}}\\[-4pt]
-		\textcolor{accent}{ \rule{0.1\textwidth}{2pt} } \\
-	}
-}
-
-%----------------------------------------------------------------------------------------
-%	META SKILL
-%----------------------------------------------------------------------------------------
-% Renders a progress-bar to indicate a certain skill in percent.
-% param 1: name of the skill / tech / etc.
-% param 2: level (for example in years)
-% param 3: percent, values range from 0 to 1
-\newcommand{\cvskill}[3] {
-	\begin{tabular*}{1\mpwidth}{p{0.68\mpwidth}  r}
- 		\textcolor{black}{\textbf{#1}} & \textcolor{primary}{#2}\\
-	\end{tabular*}%
-	
-	\hspace{4pt}
-	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
-		\fill [white] (0,0) rectangle (1\mpwidth, 0.15);
-		\fill [secondary] (0,0) rectangle (#3\mpwidth, 0.15);
-  	\end{tikzpicture}%
-}
-
-
-%----------------------------------------------------------------------------------------
-%	 CV EVENT
-%----------------------------------------------------------------------------------------
-% Renders a table and a paragraph (cvtext) wrapped in a parbox (to ensure minimum content
-% is glued together when a pagebreak appears).
-% Additional Information can be passed in text or list form (or other environments).
-% the work you did
-% param 1: time-frame i.e. Sep 14 - Jan 15 etc.
-% param 2:	 event name (job position etc.)
-% param 3: Customer, Employer, Industry
-% param 4: Short description
-% param 5: work done (optional)
-% param 6: technologies include (optional)
-% param 7: achievements (optional)
-\newcommand{\cvevent}[7] {
-	
-	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
-	% if you need more control on page breaks, remove the parbox
-	\parbox{\mpwidth}{
-		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{primary}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{secondary}{\textbf{#3}} & \\
-		\end{tabular*}\\[4pt]
-	
-		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{#4}\\
-		}
-	}
-
-	\ifthenelse{\isempty{#5}}{}{
-		\vspace{4pt}
-		{#5}
-	}
-	\vspace{4pt}
-}
-\newcommand{\cveventAccent}[7] {
-	
-	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
-	% if you need more control on page breaks, remove the parbox
-	\parbox{\mpwidth}{
-		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{accent}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{accent}{\textbf{#3}} & \\
-		\end{tabular*}\\[4pt]
-	
-		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{#4}\\
-		}
-	}
-
-	\ifthenelse{\isempty{#5}}{}{
-		\vspace{4pt}
-		{#5}
-	}
-	\vspace{4pt}
-}
-
-%----------------------------------------------------------------------------------------
-%	 CV META EVENT
-%----------------------------------------------------------------------------------------
-% Renders a CV event on the sidebar
-% param 1: title
-% param 2: subtitle (optional)
-% param 3: customer, employer, etc,. (optional)
-% param 4: info text (optional)
-\newcommand{\cvmetaevent}[4] {
-	\textcolor{primary} {\cvtext{\textbf{\begin{flushleft}#1\end{flushleft}}}}
-
-	\ifthenelse{\isempty{#2}}{}{
-	\textcolor{black} {\cvtext{\textbf{#2}} }
-	}
-
-	\ifthenelse{\isempty{#3}}{}{
-		\cvtext{{ \textcolor{black} {#3} }}\\
-	}
-
-	\cvtext{#4}\\[14pt]
-}
-
-%---------------------------------------------------------------------------------------
-%	QR CODE
-%----------------------------------------------------------------------------------------
-% Renders a qrcode image (centered, relative to the parentwidth)
-% param 1: percent width, from 0 to 1
-\newcommand{\cvqrcode}[1] {
-	\begin{center}
-		\includegraphics[width={#1}\mpwidth]{qrcode}
-	\end{center}
-}
 
 %---------------------------------------------------------------------------------------
 %	Include customizable Labels as custom package
 %----------------------------------------------------------------------------------------
+% Custom Commands for Elements and Snippets
+\usepackage{variables/elements}
+% Labels for easy customization
 \usepackage{variables/labels}
 
 %============================================================================%
@@ -342,7 +180,7 @@
 \colseprulecolor{white}
 
 \newpage
-\input{./pages/opener}
+% \input{./pages/opener}
 
 \newpage
 \input{./pages/cover-letter}

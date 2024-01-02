@@ -3,7 +3,7 @@ name: Build and Publish current Resume
 on:
   push:
     branches:
-      - '*'
+      - 'main'
 
 jobs:
   build:
@@ -23,13 +23,13 @@ jobs:
       - name: Test if Resume build was successful
         run: '(test -f downloads/mai-joel_maximilian-curriculum_vitae.pdf && echo PDF exists) || (echo PDF does not exist && exit 1)'
         
-      - name: Get current commit hash
-        id: commit_hash
-        run: echo "::set-output name=hash::$(git rev-parse HEAD)"
+      - name: Get the current date and time
+        id: date
+        run: echo "::set-output name=timestamp::$(date +'%Y-%m-%d-%H-%M')"
 
-      - name: Generate new tag name
+      - name: Generate Release Tag
         id: generate_tag
-        run: echo "::set-output name=tag::v$GITHUB_SHA"
+        run: echo "::set-output name=tag::v${{ steps.date.outputs.timestamp }}"
         
       - name: Create Release
         id: create_release
