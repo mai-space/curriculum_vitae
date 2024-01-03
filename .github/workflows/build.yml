@@ -20,7 +20,7 @@ jobs:
           # Add any additional configurations here, such as 'args' or 'extra_system_packages'
       
       - name: Test if Resume build was successful
-        run: '(test -f downloads/mai-joel_maximilian-curriculum_vitae.pdf && echo PDF exists) || (echo PDF does not exist && exit 1)'
+        run: '(test -f mai-joel_maximilian-curriculum_vitae.pdf && echo PDF exists) || (echo PDF does not exist && exit 1)'
         
       - name: Get the current date and time
         id: date
@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: downloads/mai-joel_maximilian-curriculum_vitae.pdf
+          asset_path: mai-joel_maximilian-curriculum_vitae.pdf
           asset_name: mai-joel_maximilian-curriculum_vitae.pdf
           asset_content_type: application/pdf
         env:
