@@ -1,5 +1,13 @@
 \ProvidesPackage{variables/elements}
 
+\newtcolorbox{accentBorderLeft}{
+  blanker, breakable, left=1em,
+  borderline west={2pt}{0pt}{accent}}
+
+\newtcolorbox{defaultBorderLeft}{
+  blanker, breakable, left=1em,
+  borderline west={2pt}{0pt}{secondary}}
+
 %----------------------------------------------------------------------------------------
 %	 CV LIST
 %----------------------------------------------------------------------------------------
@@ -17,6 +25,22 @@
 \newcommand{\cvtext}[1] {
 	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
 		\parbox{1\mpwidth}{#1}
+	\end{tabular*}
+}
+
+\newcommand{\cvtextWithAccentBorder}[1] {
+	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
+		\begin{accentBorderLeft}
+			#1
+		\end{accentBorderLeft}
+	\end{tabular*}
+}
+
+\newcommand{\cvtextWithBorder}[1] {
+	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
+		\begin{defaultBorderLeft}
+			#1
+		\end{defaultBorderLeft}
 	\end{tabular*}
 }
 
@@ -74,10 +98,9 @@
 % param 5: work done (optional)
 % param 6: technologies include (optional)
 % param 7: achievements (optional)
+% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+% if you need more control on page breaks, remove the parbox
 \newcommand{\cvevent}[7] {
-	
-	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
-	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
 	 		\textcolor{black}{\textbf{#2}} & \colorbox{primary}{\makebox[0.25\mpwidth]{\textcolor{white}{\textbf{#1}}}} \\
@@ -85,20 +108,18 @@
 		\end{tabular*}\\[4pt]
 	
 		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{#4}\\
+			\cvtextWithBorder{#4}\\
+		}
+		\ifthenelse{\isempty{#5}}{}{
+			\vspace{2pt}
+			\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
+				\parbox{1\mpwidth}{\small #5}
+			\end{tabular*}
 		}
 	}
-
-	\ifthenelse{\isempty{#5}}{}{
-		\vspace{4pt}
-		{#5}
-	}
-	\vspace{4pt}
+	\vspace{8pt}
 }
 \newcommand{\cveventAccent}[7] {
-	
-	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
-	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
 	 		\textcolor{black}{\textbf{#2}} & \colorbox{accent}{\makebox[0.25\mpwidth]{\textcolor{white}{\textbf{#1}}}} \\
@@ -106,15 +127,16 @@
 		\end{tabular*}\\[4pt]
 	
 		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{#4}\\
+			\cvtextWithAccentBorder{#4}\\
+		}
+		\ifthenelse{\isempty{#5}}{}{
+			\vspace{2pt}
+			\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
+				\parbox{1\mpwidth}{\small #5}
+			\end{tabular*}
 		}
 	}
-
-	\ifthenelse{\isempty{#5}}{}{
-		\vspace{4pt}
-		{#5}
-	}
-	\vspace{4pt}
+	\vspace{8pt}
 }
 
 %----------------------------------------------------------------------------------------
