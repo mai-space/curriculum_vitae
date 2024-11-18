@@ -33,7 +33,7 @@ You can download the latest version of my CV using the following links:
 
 ## Contact
 
-Feel free to reach out to me via email at [joel@maispace.de](mailto:joel@maispace.de). You can also explore my work and connect with me on [GitHub](https://github.com/mai-space), [LinkedIn](https://www.linkedin.com/in/joel-maximilian-mai/), and [Xing](https://www.xing.com/profile/JoelMaximilian_Mai/portfolio).
+Feel free to reach out to me via email at [joel.maximilian.mai.1998@gmail.com](mailto:joel.maximilian.mai.1998@gmail.com). You can also explore my work and connect with me on [GitHub](https://github.com/mai-space), [LinkedIn](https://www.linkedin.com/in/joel-maximilian-mai/), and [Xing](https://www.xing.com/profile/JoelMaximilian_Mai/portfolio).
 
 I'm excited about the endless possibilities in the world of web development, and I'm always eager to collaborate on exciting projects and challenges. Let's connect and create something amazing together!
 
