@@ -36,7 +36,3 @@ You can download the latest version of my CV using the following links:
 Feel free to reach out to me via email at [joel.maximilian.mai.1998](mailto:joel.maximilian.mai.1998@gmail.com). You can also explore my work and connect with me on [GitHub](https://github.com/mai-space), [LinkedIn](https://www.linkedin.com/in/joel-maximilian-mai/), and [Xing](https://www.xing.com/profile/JoelMaximilian_Mai/portfolio).
 
 I'm excited about the endless possibilities in the world of web development, and I'm always eager to collaborate on exciting projects and challenges. Let's connect and create something amazing together!
-
----
-
-[![ENGLISH](https://img.shields.io/badge/English-%2307F.svg?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/mai-space/curriculum_vitae/raw/languages/english/download/mai-joel_maximilian-curriculum_vitae.pdf) [![GERMAN](https://img.shields.io/badge/German-%23FF0.svg?style=for-the-badge&logo=GitHub&logoColor=black)](https://github.com/mai-space/curriculum_vitae/raw/languages/german/download/mai-joel_maximilian-curriculum_vitae.pdf)
